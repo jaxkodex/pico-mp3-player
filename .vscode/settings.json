@@ -1,0 +1,36 @@
+{
+  "cmake.configureOnOpen": false,
+  "cmake.statusbar.advanced": {
+    "debug" : {
+      "visibility": "hidden"
+              },
+    "launch" : {
+      "visibility": "hidden"
+               },
+    "build" : {
+      "visibility": "hidden"
+               },
+    "buildTarget" : {
+      "visibility": "hidden"
+               },
+    },
+    "files.associations": {
+      "minimp3conf.h": "c",
+      "player.h": "c",
+      "stdbool.h": "c",
+      "music_file.h": "c",
+      "blue.h": "c",
+      "cstdlib": "c",
+      "memory": "c",
+      "cstring": "c",
+      "typeinfo": "c",
+      "queue.h": "c",
+      "log.h": "c",
+      "video.h": "c",
+      "dev_config.h": "c",
+      "events.h": "c",
+      "logger.h": "c",
+      "ui.h": "c",
+      "screensaver.h": "c"
+    },
+}

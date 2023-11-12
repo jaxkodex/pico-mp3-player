@@ -39,12 +39,12 @@ DRESULT disk_read (BYTE pdrv, BYTE* buff, DWORD sector, UINT count) {
 
   uint8_t result = read(spi0, sector, buff, count);
 
-  printf("Read result: %d\n", result);
+  // printf("Read result: %d\n", result);
 
-  for (size_t i = 0; i < sizeof(buff); i++)
-  {
-    printf("buff[%d]: %d\n", i, buff[i]);
-  }
+  // for (size_t i = 0; i < sizeof(buff); i++)
+  // {
+  //   printf("buff[%d]: %d\n", i, buff[i]);
+  // }
 
   return result ? RES_ERROR : RES_OK;
 }

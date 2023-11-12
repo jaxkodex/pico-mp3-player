@@ -110,6 +110,7 @@ void spi_initialize(spi_inst_t *spi, uint8_t CS_PIN, uint8_t MISO_PIN, uint8_t S
     printf("Initialized\n");
     // Configure clock to 400kHz, required for the SD card to work
     // spi_init(spi, 25 * 1000 * 1000);
+    printf("Setting baudrate %d\n", spi_set_baudrate(spi, 15 * 1000 * 1000));
   }
 
   spi_deselect(spi);
@@ -184,13 +185,13 @@ static uint8_t send_cmd(spi_inst_t *spi, uint8_t command, uint32_t arg, uint8_t 
 
 uint8_t read (spi_inst_t *spi, uint32_t sector, uint8_t *buffer, uint8_t count) {
   uint8_t cmd = count > 1 ? CMD18 : CMD17;
-  printf("Read start: %d\n", count);
-  printf("cmd: %d, sector: %d, count: %d\n", cmd, sector, count);
+  // printf("Read start: %d\n", count);
+  // printf("cmd: %d, sector: %d, count: %d\n", cmd, sector, count);
   if (send_cmd(spi, cmd, sector, 0x01) == 0) {
     printf("Reading...\n");
     do {
 			if (!rcvr_datablock(spi, buffer, 512)) {
-        printf("Failed to read data block\n");
+        // printf("Failed to read data block\n");
         break;
       }
 			buffer += 512;
@@ -198,7 +199,7 @@ uint8_t read (spi_inst_t *spi, uint32_t sector, uint8_t *buffer, uint8_t count) 
     if (cmd == CMD18) send_cmd(spi, CMD12, 0, 0x01);	/* STOP_TRANSMISSION */
   }
   spi_deselect(spi);
-  printf("Read end: %d\n", count);
+  // printf("Read end: %d\n", count);
   return count ? 1 : 0;
 }
 
